@@ -1,3 +1,12 @@
+from api.filters import TitleFilter
+from api.permissions import (AdminOnly, AuthorAdminModeratorOrReadOnly,
+                             IsAdminOrReadOnly)
+from api.serializers import (CategorySerializer, CommentSerializer,
+                             CreateUserSerializer, GenreSerializer,
+                             GetTokenSerializer, ReviewSerializer,
+                             TitleCreateSerializer, TitleSerializer,
+                             UserSerializer)
+from api.viewsets import FilteredAdminOrReadOnlyListCreateDestroyViewSet
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.db import IntegrityError
@@ -10,18 +19,9 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-
-from api.filters import TitleFilter
-from api.permissions import (AdminOnly, AuthorAdminModeratorOrReadOnly,
-                             IsAdminOrReadOnly)
-from api.serializers import (CategorySerializer, CommentSerializer,
-                             CreateUserSerializer, GenreSerializer,
-                             GetTokenSerializer, ReviewSerializer,
-                             TitleCreateSerializer, TitleSerializer,
-                             UserSerializer)
-from api.viewsets import FilteredAdminOrReadOnlyListCreateDestroyViewSet
-from api_yamdb.settings import PROJECT_EMAIL
 from reviews.models import Category, Genre, Review, Title, User
+
+from api_yamdb.settings import PROJECT_EMAIL
 
 WRONG_CONFIRMATION_CODE = 'Ошибочный код подтверждения'
 
