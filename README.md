@@ -2,7 +2,7 @@
 ![yamdb_workflow](https://github.com/BadBedBatPenguin/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 YAMDb API is an online database containing reviews for different titles. Titles are divided by categories and genres. There's opportunity to comment any review. All opportunities depend on user's role. \
-Used technologies: Django, Django rest framework, SimpleJWT
+Used technologies: Python, Django, Django rest framework, SimpleJWT
 
 ## How to run project
 
