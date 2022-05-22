@@ -10,9 +10,6 @@ Clone repo and move to its directory:
 
 ```Shell
 git clone https://github.com/BadBedBatPenguin/api_yamdb.git
-```
-
-```Shell
 cd api_yamdb
 ```
 
@@ -20,9 +17,6 @@ Create and activate virtual environment:
 
 ```Shell
 python3 -m venv env
-```
-
-```Shell
 source env/bin/activate
 ```
 
@@ -30,9 +24,6 @@ Install packages from requirements.txt:
 
 ```Shell
 python3 -m pip install --upgrade pip
-```
-
-```Shell
 pip install -r requirements.txt
 ```
 
