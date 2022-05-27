@@ -13,30 +13,52 @@ git clone https://github.com/BadBedBatPenguin/api_yamdb.git
 cd api_yamdb
 ```
 
-Create and activate virtual environment:
+Create and fill .env file as in sample:
+```
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=<database_name>
+POSTGRES_USER=<PostgreSQL_username>
+POSTGRES_PASSWORD=<User_password>
+DB_HOST=db
+DB_PORT=5432
+SECRET_KEY=<secret_key_from_settings.py>
+ALLOWED_HOSTS='<host IPs and names separated with whitespace>'
+```
+Save .env file to app/infra/ directory
+
+Start container with project:
 
 ```Shell
-python3 -m venv env
-source env/bin/activate
+cd infra
+docker-compose up -d --build
 ```
 
-Install packages from requirements.txt:
+Install dependencies:
 
 ```Shell
-python3 -m pip install --upgrade pip
-pip install -r requirements.txt
+docker-compose exec web python -m pip install --upgrade pip
+docker-compose exec web pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
+docker-compose exec web pip install -r api_yamdb/requirements.txt
 ```
 
-Migrate:
+Run tests:
 
 ```Shell
-python3 manage.py migrate
+docker-compose exec web python -m flake8
+docker-compose exec web pytest
+```
+
+Migrate, create superuser and collect static:
+```Shell
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py createsuperuser
+docker-compose exec web python manage.py collectstatic --no-input
 ```
 
 Run project:
 
 ```Shell
-python3 manage.py runserver
+docker-compose exec web python manage.py runserver
 ```
 
 ## Filling database with data from csv files:
@@ -47,6 +69,8 @@ run command:
 python3 manage.py import_csv
 ```
 
+## Running project
+To look how project runs follow this link: ([YAMDB](https://51.250.98.198))
 ## Autors
 
 Bahmutov Alex ([Patron322](https://github.com/Patron322)) \
