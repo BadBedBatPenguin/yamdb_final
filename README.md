@@ -23,6 +23,7 @@ DB_HOST=db
 DB_PORT=5432
 SECRET_KEY=<secret_key_from_settings.py>
 ALLOWED_HOSTS='<host IPs and names separated with whitespace>'
+DEBUG=False
 ```
 Save .env file to app/infra/ directory
 
